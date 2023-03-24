@@ -8,7 +8,7 @@ export const SearchUser = async (text) => {
       q: text,
     });
     try{
-        const token = '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';
+        const token = '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';
         const headers = { Authorization: `Bearer ${token}` };
         const response=await axios.get(`${GITHUB_API}/search/users?${params}`,{headers})
         return response.data.items
@@ -27,7 +27,7 @@ export const userAndRepos=async(login)=>{
         per_page:10
       });
    try{
-    const token = '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';
+    const token = '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';
     const headers = { Authorization: `Bearer ${token}` };   
     const [user,repos]=await Promise.all([
     axios.get(`${GITHUB_API}/users/${login}`,{headers}),
