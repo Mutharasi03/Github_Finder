@@ -1,5 +1,5 @@
 import axios from "axios";
-// const GITHUB_API = process.env.REACT_APP_GITHUB_API;
+const GITHUB_API = process.env.REACT_APP_GITHUB_API;
 
 // Search user
 export const SearchUser = async (text) => {
@@ -8,9 +8,9 @@ export const SearchUser = async (text) => {
       q: text,
     });
     try{
-        const token = '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';
-        const headers = { Authorization: `Bearer ${token}` };
-        const response=await axios.get(`https://api.github.com/search/users?${params}`,{headers})
+        const token = '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';
+        const header= { Authorization: `Bearer ${token}` };
+        const response=await axios.get(`${GITHUB_API}/search/users?${params}`,{header})
         return response.data.items
     }
    catch (error) {
@@ -27,11 +27,11 @@ export const userAndRepos=async(login)=>{
         per_page:10
       });
    try{
-    const token = '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';
-    const headers = { Authorization: `Bearer ${token}` };   
+    const token = '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';
+    const header = { Authorization: `Bearer ${token}` };   
     const [user,repos]=await Promise.all([
-    axios.get(`https://api.github.com/users/${login}`,{headers}),
-    axios.get(`https://api.github.com/users/${login}/repos?${param}`,{headers})])
+    axios.get(`${GITHUB_API}/users/${login}`,{header}),
+    axios.get(`${GITHUB_API}/users/${login}/repos?${param}`,{header})])
     return ({user:user.data,repos:repos.data})
    }
    catch (error) {
